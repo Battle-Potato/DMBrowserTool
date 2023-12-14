@@ -8,6 +8,7 @@
 - Dice Roller
 - Save content between uses(does this mean cookies? could just be done with a json file)
 - Create locked divisions on the screen to attach windows too
+- "Tooltips?" Items/Spells/Monsters?
 
 ## List of Types of Sub-Windows
 - Initiative Tracker
