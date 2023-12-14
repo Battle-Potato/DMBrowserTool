@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resizable, Draggable, and Bring to Foreground Windows</title>
+  <style>
+    html{
+        background-color: slategray;
+    }
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .window {
+      position: absolute;
+      border: 1px solid #000;
+      background-color: #fff;
+      resize: both;
+      overflow: hidden;
+      z-index: 1; /* Start with a default z-index */
+      min-width: 200px;
+      min-height: 200px;
+    }
+
+    .window-header {
+      background-color: #ddd;
+      padding: 5px;
+      cursor: move;
+    }
+
+    .window-content{
+        margin: 3px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="window" id="window1" style="top: 50px; left: 50px; width: 300px; height: 200px;" onclick="bringToFront('window1')">
+  <div class="window-header" onmousedown="startDrag(event, 'window1')">Window 1</div>
+  <div class="window-content">
+    <!-- Your content goes here -->
+    <p>This is window 1 content.</p>
+  </div>
+</div>
+
+<div class="window" id="window2" style="top: 100px; left: 100px; width: 250px; height: 150px;" onclick="bringToFront('window2')">
+  <div class="window-header" onmousedown="startDrag(event, 'window2')">Window 2</div>
+  <div class="window-content">
+    <!-- Your content goes here -->
+    <p>This is window 2 content.</p>
+  </div>
+</div>
+
+<div class="window" id="window3" style="top: 150px; left: 150px; width: 200px; height: 100px;" onclick="bringToFront('window3')">
+  <div class="window-header" onmousedown="startDrag(event, 'window3')">Window 3</div>
+  <div class="window-content">
+    <!-- Your content goes here -->
+    <p>This is window 3 content.</p>
+  </div>
+</div>
+
+
+<script>
+  function startDrag(e, id) {
+    e.preventDefault();
+
+    const windowElement = document.getElementById(id);
+    const offsetX = e.clientX - windowElement.getBoundingClientRect().left;
+    const offsetY = e.clientY - windowElement.getBoundingClientRect().top;
+
+    function dragMove(e) {
+      let x = e.clientX - offsetX;
+      let y = e.clientY - offsetY;
+
+      // Ensure the window stays within the viewport bounds
+      x = Math.max(0, Math.min(window.innerWidth - windowElement.clientWidth, x));
+      y = Math.max(0, Math.min(window.innerHeight - windowElement.clientHeight, y));
+
+      windowElement.style.left = `${x}px`;
+      windowElement.style.top = `${y}px`;
+    }
+
+    function dragEnd() {
+      document.removeEventListener('mousemove', dragMove);
+      document.removeEventListener('mouseup', dragEnd);
+    }
+
+    document.addEventListener('mousemove', dragMove);
+    document.addEventListener('mouseup', dragEnd);
+
+    // Bring the window to the front when dragging starts
+    bringToFront(id);
+  }
+
+  function bringToFront(id) {
+    const windowElement = document.getElementById(id);
+    const windows = document.querySelectorAll('.window');
+    let maxZIndex = 0;
+
+    // Find the maximum z-index among all windows
+    windows.forEach((win) => {
+      const zIndex = parseInt(window.getComputedStyle(win).zIndex, 10);
+      maxZIndex = Math.max(maxZIndex, zIndex);
+    });
+
+    // Set a higher z-index for the clicked window
+    windowElement.style.zIndex = maxZIndex + 1;
+  }
+</script>
+
+</body>
+</html>
+
