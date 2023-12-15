@@ -16,6 +16,8 @@
 - Lookup Window
    - Stat Block with Hyperlinks for rolls
 - Dice Roller
+   - Previous Rolls Section
+   - Formating for crit fails/crit succs
 - Note Pad
 - Turn Tracker with reminder tool(built into initiative tracker?)
 - Image

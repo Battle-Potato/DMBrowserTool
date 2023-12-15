@@ -1,0 +1,63 @@
+html{
+    background-color: slategray;
+}
+body {
+    margin: 0;
+    overflow: hidden;
+}
+
+.window {
+    position: absolute;
+    border: 1px solid #000;
+    background-color: #fff;
+    resize: both;
+    overflow: hidden;
+    z-index: 1; /* Start with a default z-index */
+    min-width: 200px;
+    min-height: 200px;
+    top: 50px;
+    left: 50px;
+    width: 300px;
+    height: 200px;
+}
+
+.window-header {
+    background-color: #ddd;
+    padding: 5px;
+    cursor: move;
+}
+
+.window-content{
+    margin: 3px;
+}
+
+.dice-roller-container{
+    border: black;
+}
+
+.dice-container{
+    justify-content: left;
+}
+
+.dice-count-input{
+    text-align: center;
+    width: 30px;
+}
+
+.dice-roll-output-container{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+/* For Chrome, Safari, and Edge */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* For Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
