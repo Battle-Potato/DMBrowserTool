@@ -23,13 +23,68 @@ function getRandomIntInclusive(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min); // The maximum is inclusive and the minimum is inclusive
 }
 
+function rollInputToString(input)
+{
+    inputString = ""
+
+    console.log(input)
+
+    if(input.d4 !== "0")
+    {
+        if(inputString !== "")
+            inputString += "+"
+        inputString += (input.d4 + "d4")
+    }
+    if(input.d6 !== "0")
+    {
+        if(inputString !== "")
+            inputString += "+"
+        inputString += (input.d6 + "d6")
+    }
+    if(input.d8 !== "0")
+    {
+        if(inputString !== "")
+            inputString += "+"
+        inputString += (input.d8 + "d8")
+    }
+    if(input.d10 !== "0")
+    {
+        if(inputString !== "")
+            inputString += "+"
+        inputString += (input.d10 + "d10")
+    }
+    if(input.d12 !== "0")
+    {
+        if(inputString !== "")
+            inputString += "+"
+        inputString += (input.d12 + "d12")
+    }
+    if(input.d20 !== "0")
+    {
+        if(inputString !== "")
+            inputString += "+"
+        inputString += (input.d20 + "d20")
+    }
+    if(input.modifier !== "0")
+    {
+        if(inputString !== "")
+            inputString += "+"
+        inputString += (input.modifier)
+    }
+
+    if(inputString === "")
+        inputString = "0"
+
+    return inputString
+}
+
 function rollDice(event)
 {
     var diceValues = [4, 6, 8, 10, 12, 20]
     var diceCounts = []
     var diceRoll = 0
 
-    var diceContainer = event.target.parentElement.parentElement
+    var diceContainer = event.target.parentElement.parentElement.parentElement
 
     for(var i = 0; i < diceValues.length; i++)
     {
@@ -56,6 +111,26 @@ function rollDice(event)
 
     outputContainer.textContent = diceRoll
     console.log("-----------------")
+ 
+    var input = {
+        d4: diceCounts[0],
+        d6: diceCounts[1],
+        d8: diceCounts[2],
+        d10: diceCounts[3],
+        d12: diceCounts[4],
+        d20: diceCounts[5],
+        modifier: modifier.value
+    }
+
+    var inputString = rollInputToString(input)
+
+    var newRoll = Handlebars.templates.rollHistory({
+        input: inputString,
+        output: diceRoll
+    })
+
+    var rollHistoryElement = diceContainer.getElementsByClassName("roll-history")[0]
+    rollHistoryElement.insertAdjacentHTML("beforeend", newRoll)
 
 }
 

@@ -5,8 +5,11 @@
   "main": "server.js",
   "scripts": {
     "test": "test",
+    "prestart": "npm run build",
+    "build": "handlebars ./views/partials/rollHistory.handlebars -f public/rollHistory.js",
     "start": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "predev": "npm run prestart"
   },
   "repository": {
     "type": "git",

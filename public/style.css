@@ -61,3 +61,15 @@ input[type="number"]::-webkit-outer-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+.roll{
+    width: 100px;
+}
+
+.roll-input{
+    text-align: left;
+}
+
+.roll-output{
+    text-align: right;
+}

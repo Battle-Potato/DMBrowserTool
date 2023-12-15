@@ -23,6 +23,9 @@
 - Image
 - Timer
 - Ingame time tracker
+- Console of some sort?
+   - /roll xdy+z
+   - /add monster {json for monster here}
 
 ## Stretch goals
 - Something that could be run on as an actual website for players.
