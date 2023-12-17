@@ -32,15 +32,26 @@ body {
 }
 
 .dice-roller-container{
-    border: black;
+
+    display: flex;
 }
 
 .dice-container{
     justify-content: left;
 }
 
+.dice-section{
+    min-width: 111px;
+    max-width: 111px;
+}
+
 .dice-count-input{
     text-align: center;
+    width: 30px;
+}
+
+.modifier-input
+{
     width: 30px;
 }
 
@@ -62,14 +73,24 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
-.roll{
-    width: 100px;
-}
-
 .roll-input{
     text-align: left;
+    word-wrap:break-word;
 }
 
 .roll-output{
     text-align: right;
+}
+
+.roll-history{
+    width: auto;
+    margin-left: 30px;
+}
+
+.sucsess{
+    color: rgb(0, 255, 0)
+}
+
+.fail{
+    color: red;
 }

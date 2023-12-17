@@ -23,6 +23,37 @@ function getRandomIntInclusive(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min); // The maximum is inclusive and the minimum is inclusive
 }
 
+
+function calculateMaxRollAsObject(input)
+{
+    var max = 0
+
+    max += parseInt(input.d4) * 4
+    max += parseInt(input.d6) * 6
+    max += parseInt(input.d8) * 8
+    max += parseInt(input.d10) * 10
+    max += parseInt(input.d12) * 12
+    max += parseInt(input.d20) * 20    
+    max += parseInt(input.modifier)
+
+    return max
+}
+
+function calculateMinRollAsObject(input)
+{
+    var min = 0
+
+    min += parseInt(input.d4) * 1
+    min += parseInt(input.d6) * 1
+    min += parseInt(input.d8) * 1
+    min += parseInt(input.d10) * 1
+    min += parseInt(input.d12) * 1
+    min += parseInt(input.d20) * 1   
+    min += parseInt(input.modifier)
+
+    return min
+}
+
 function rollInputToString(input)
 {
     inputString = ""
@@ -132,6 +163,17 @@ function rollDice(event)
     var rollHistoryElement = diceContainer.getElementsByClassName("roll-history")[0]
     rollHistoryElement.insertAdjacentHTML("beforeend", newRoll)
 
+
+    if(diceRoll === calculateMaxRollAsObject(input))
+    {
+        var outputElement = rollHistoryElement.getElementsByClassName("roll-output")
+        outputElement[outputElement.length - 1].classList.toggle("sucsess")        
+    }
+    else if(diceRoll === calculateMinRollAsObject(input))
+    {
+        var outputElement = rollHistoryElement.getElementsByClassName("roll-output")
+        outputElement[outputElement.length - 1].classList.toggle("fail")        
+    }
 }
 
 function initEventHandlers()

@@ -8,10 +8,10 @@ templates['rollHistory'] = template({"compiler":[8,">= 4.3.0"],"main":function(c
         return undefined
     };
 
-  return "<div class=\"roll\">\r\n    <span class=\"roll-input\">\r\n        "
-    + alias4(((helper = (helper = lookupProperty(helpers,"input") || (depth0 != null ? lookupProperty(depth0,"input") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"input","hash":{},"data":data,"loc":{"start":{"line":3,"column":8},"end":{"line":3,"column":17}}}) : helper)))
-    + ":\r\n    </span>\r\n    <span class=\"roll-output\">\r\n        "
-    + alias4(((helper = (helper = lookupProperty(helpers,"output") || (depth0 != null ? lookupProperty(depth0,"output") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"output","hash":{},"data":data,"loc":{"start":{"line":6,"column":8},"end":{"line":6,"column":18}}}) : helper)))
-    + "\r\n    </span>\r\n</div>";
+  return "<div class=\"roll\">\r\n    <p>\r\n        <span class=\"roll-input\">\r\n            "
+    + alias4(((helper = (helper = lookupProperty(helpers,"input") || (depth0 != null ? lookupProperty(depth0,"input") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"input","hash":{},"data":data,"loc":{"start":{"line":4,"column":12},"end":{"line":4,"column":21}}}) : helper)))
+    + ":\r\n        </span>\r\n        <span class=\"roll-output\">\r\n            "
+    + alias4(((helper = (helper = lookupProperty(helpers,"output") || (depth0 != null ? lookupProperty(depth0,"output") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"output","hash":{},"data":data,"loc":{"start":{"line":7,"column":12},"end":{"line":7,"column":22}}}) : helper)))
+    + "\r\n        </span>\r\n    </p>\r\n</div>";
 },"useData":true});
 })();
