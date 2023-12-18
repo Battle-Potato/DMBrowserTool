@@ -160,20 +160,21 @@ function rollDice(event)
         output: diceRoll
     })
 
+    //Conditional Highlighting for crit fail/suc
     var rollHistoryElement = diceContainer.getElementsByClassName("roll-history")[0]
     rollHistoryElement.insertAdjacentHTML("beforeend", newRoll)
-
-
     if(diceRoll === calculateMaxRollAsObject(input))
     {
         var outputElement = rollHistoryElement.getElementsByClassName("roll-output")
-        outputElement[outputElement.length - 1].classList.toggle("sucsess")        
+        outputElement[outputElement.length - 1].classList.toggle("success")        
     }
     else if(diceRoll === calculateMinRollAsObject(input))
     {
         var outputElement = rollHistoryElement.getElementsByClassName("roll-output")
         outputElement[outputElement.length - 1].classList.toggle("fail")        
     }
+
+    rollHistoryElement.scrollTop = rollHistoryElement.scrollHeight - rollHistoryElement.clientHeight;
 }
 
 function initEventHandlers()

@@ -29,10 +29,11 @@ body {
 
 .window-content{
     margin: 3px;
+    height:calc(100% - 30px);
 }
 
 .dice-roller-container{
-
+    height: inherit;
     display: flex;
 }
 
@@ -41,8 +42,8 @@ body {
 }
 
 .dice-section{
-    min-width: 111px;
-    max-width: 111px;
+    min-width: 120px;
+    max-width: 120px;
 }
 
 .dice-count-input{
@@ -59,6 +60,7 @@ body {
     display: flex;
     justify-content: left;
     align-items: center;
+    height: inherit
 }
 
 /* For Chrome, Safari, and Edge */
@@ -85,9 +87,11 @@ input[type="number"] {
 .roll-history{
     width: auto;
     margin-left: 30px;
+    height: 100%;
+    overflow-y: scroll
 }
 
-.sucsess{
+.success{
     color: rgb(0, 255, 0)
 }
 
