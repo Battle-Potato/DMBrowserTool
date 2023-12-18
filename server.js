@@ -11,9 +11,24 @@ app.set('view engine', 'handlebars');
 // Serve static files from the "public" directory
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+//converts Given name to unique ID for a window
+function convertNameToId(input)
+{
+    for(var i = 0; i < input.length; i++)
+    {
+        if(input[i] === " ")
+        {
+            input[i] = "-"
+        }
+    }
+    console.log(input)
+}
+
 // Set up a basic route
 app.get('/', (req, res) => {
-    res.status(200).render("windows");
+    var name = "Dice Roller 1"
+    res.status(200).render("test", {name: "Dice Roller 1", id: name.replaceAll(" ", "-")})
 });
 
 // Start the server
